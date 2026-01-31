@@ -10,12 +10,23 @@
     --dark: #3e4b5b;
     --bg-color: #f2edf3;
     --sidebar-width: 260px;
+    --sidebar-width-icon: 70px;
     --navbar-height: 70px;
 }
 
 body {
     font-family: 'Ubuntu', sans-serif;
     background: var(--bg-color);
+    overflow-x: hidden;
+}
+
+/* Page Body Wrapper - Fix for Sidebar Gap */
+.page-body-wrapper {
+    display: flex;
+    padding-top: var(--navbar-height);
+    min-height: 100vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 /* Navbar Customization */
@@ -23,11 +34,15 @@ body {
     background: #fff;
     transition: background 0.25s ease;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    height: var(--navbar-height); /* Enforce fixed height */
 }
 
 .navbar .navbar-brand-wrapper {
     width: var(--sidebar-width);
     height: var(--navbar-height);
+    background: #fff;
+    transition: width 0.25s ease;
+    padding-left: 0; 
 }
 
 .navbar .navbar-brand {
@@ -36,11 +51,19 @@ body {
     font-size: 1.5rem;
 }
 
+.navbar .brand-logo-mini {
+    display: none;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .navbar .navbar-menu-wrapper {
     color: #9c9fa6;
     padding-left: 15px;
     padding-right: 15px;
     width: calc(100% - var(--sidebar-width));
+    transition: width 0.25s ease;
 }
 
 .nav-profile-img img {
@@ -55,6 +78,20 @@ body {
     box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
 }
 
+/* Navbar Profile Horizontal Fix */
+.navbar .nav-item.nav-profile .nav-link {
+    display: flex;
+    align-items: center;
+}
+.navbar .nav-item.nav-profile .nav-profile-img {
+    position: relative;
+    margin-right: 10px;
+}
+.navbar .nav-item.nav-profile .nav-profile-text {
+    display: flex; 
+    flex-direction: column;
+}
+
 /* Sidebar Customization */
 .sidebar {
     min-height: calc(100vh - var(--navbar-height));
@@ -65,7 +102,7 @@ body {
     z-index: 11;
     transition: width 0.25s ease, background 0.25s ease;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    flex-shrink: 0; 
 }
 
 .sidebar .nav {
@@ -73,10 +110,12 @@ body {
     flex-wrap: nowrap;
     flex-direction: column;
     margin-bottom: 60px;
+    padding-top: 20px; /* Reduced space from top */
 }
 
 .sidebar .nav-item {
-    padding: 0 2.25rem; /* Match theme padding */
+    padding: 0 2.25rem;
+    transition: padding 0.25s ease;
 }
 
 .sidebar .nav-item .nav-link {
@@ -88,6 +127,7 @@ body {
     transition-duration: 0.45s;
     transition-property: color;
     font-weight: 500;
+    justify-content: flex-start; /* Changed to start for better collapse handling logic below */
 }
 
 .sidebar .nav-item.active > .nav-link {
@@ -106,31 +146,14 @@ body {
 }
 
 .sidebar .menu-icon {
-    margin-left: auto; /* Push icon to the right if needed, or stick to left like image */
-    margin-right: 0;
+    margin-right: 1.25rem; 
     font-size: 1.125rem;
     line-height: 1;
     color: #bba8bff5;
+    order: -1;
 }
 
-/* Fix for icon position in the sample image: It's actually on the right? 
-   Wait, the user image has icons on the RIGHT for some items, or standard left? 
-   Looking at the image, icons ("Basic UI Elements") seem to be on the right or indicators. 
-   Standard icons are usually left. Let's stick to standard left for main icons if "menu-icon" is widely used. 
-   Actually, in standard Purple theme, icons are on the RIGHT sometimes or left. 
-   I will stick to standard: Icon RIGHT as per some admin themes? No, usually Left.
-   Let's check the request image.
-   Image: "Basic UI Elements <Icon>" - effectively title then icon?
-   Actually, looking closely at the image:
-   "Dashboard <Home Icon>" (Icon is on the right)
-   "Weekly Sales <Chart Icon>"
-   So in the Sidebar, the text is LEFT, Icon is RIGHT.
-*/
-.sidebar .nav-link {
-    justify-content: space-between; /* This pushes text left and icon right */
-}
-
-/* Sidebar User Profile */
+/* Sidebar Profile */
 .sidebar .nav-profile .nav-link {
     display: flex;
     margin-top: 20px;
@@ -141,6 +164,7 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 100%;
+    flex-shrink: 0;
 }
 .sidebar .nav-profile .nav-profile-image img {
     border-radius: 100%;
@@ -148,10 +172,11 @@ body {
 }
 .sidebar .nav-profile .nav-profile-text {
     margin-left: 1rem;
+    white-space: nowrap;
 }
 .nav-profile-badge {
     position: absolute;
-    right: 35px; /* Adjust based on padding */
+    right: 35px;
 }
 
 
@@ -163,6 +188,7 @@ body {
     display: flex;
     flex-direction: column;
     background: var(--bg-color);
+    margin-left: auto; /* Push to right */
 }
 
 .content-wrapper {
@@ -172,65 +198,99 @@ body {
     flex-grow: 1;
 }
 
-/* Dashboard Cards (If we add them later, but setting up variables) */
-.card {
-    border: 0;
-    background: #fff;
-    border-radius: 0.3125rem;
+/* =========================================
+   COLLAPSED SIDEBAR (ICON ONLY) - DESKTOP
+   ========================================= */
+body.sidebar-icon-only .navbar .navbar-brand-wrapper {
+    width: var(--sidebar-width-icon);
 }
-
-/* Page Header */
-.page-header {
-    margin: 0 0 1.5rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body.sidebar-icon-only .navbar .navbar-menu-wrapper {
+    width: calc(100% - var(--sidebar-width-icon));
 }
-.page-title {
-    color: #343a40;
-    font-size: 1.125rem;
-    margin-bottom: 0;
+body.sidebar-icon-only .navbar .brand-logo {
+    display: none;
 }
-.page-title .page-title-icon {
+body.sidebar-icon-only .navbar .brand-logo-mini {
     display: inline-block;
-    width: 36px;
-    height: 36px;
-    border-radius: 4px;
+}
+
+body.sidebar-icon-only .sidebar {
+    width: var(--sidebar-width-icon);
+}
+
+body.sidebar-icon-only .sidebar .nav-item {
+    padding: 0 1.25rem; /* Reduce padding */
     text-align: center;
-    line-height: 36px;
-    box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
-}
-.bg-gradient-primary {
-    background: linear-gradient(to right, #da8cff, #9a55ff);
 }
 
-/* Auth Login */
-.auth-wrapper {
-    display: flex;
-    align-items: center;
+body.sidebar-icon-only .sidebar .nav-link {
     justify-content: center;
-    min-height: 100vh;
-    background: #f2edf3;
-}
-.auth-form-light {
-    background: #ffffff;
-    padding: 40px;
-}
-.auth-form-light .brand-logo {
-    color: var(--primary);
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-.auth-form-light h4 {
-    font-size: 1.13rem;
-    font-weight: 600;
-}
-.auth-form-light h6 {
-    font-weight: 300;
-    font-size: 0.9375rem;
-    color: #9c9fa6;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/* Utilities */
-.text-small { font-size: 0.875rem; }
+body.sidebar-icon-only .sidebar .menu-title, 
+body.sidebar-icon-only .sidebar .nav-profile-text,
+body.sidebar-icon-only .sidebar .nav-profile-badge {
+    display: none;
+}
+
+body.sidebar-icon-only .sidebar .menu-icon {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Special handling for User Profile in Sidebar when collapsed */
+body.sidebar-icon-only .sidebar .nav-profile .nav-link {
+    padding: 0.5rem 0; /* Make it smaller */
+}
+body.sidebar-icon-only .sidebar .nav-profile .nav-profile-image {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+body.sidebar-icon-only .main-panel {
+    width: calc(100% - var(--sidebar-width-icon));
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE / TABLET)
+   ========================================= */
+@media (max-width: 991px) {
+    .navbar .navbar-brand-wrapper {
+        width: 55px; /* Small logo width */
+    }
+    .navbar .navbar-menu-wrapper {
+        width: calc(100% - 55px);
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .navbar .brand-logo {
+        display: none;
+    }
+    .navbar .brand-logo-mini {
+        display: inline-block;
+    }
+    
+    /* Sidebar is hidden/offcanvas by default on mobile */
+    .sidebar {
+        position: fixed;
+        top: var(--navbar-height);
+        bottom: 0;
+        left: -100%; /* Hide */
+        width: var(--sidebar-width);
+        transition: left 0.3s ease;
+        box-shadow: 5px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar.active {
+        left: 0; /* Show */
+    }
+    
+    .main-panel {
+        width: 100%;
+        margin-left: 0;
+    }
+}
