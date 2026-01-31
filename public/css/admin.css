@@ -1,0 +1,236 @@
+/* Variable Overrides and Custom Theme Styles */
+:root {
+    --primary: #9a55ff; /* Purple Theme Primary */
+    --secondary: #c3bdbd;
+    --success: #1bcfb4;
+    --info: #198ae3;
+    --warning: #fed713;
+    --danger: #fe7c96;
+    --light: #f8f9fa;
+    --dark: #3e4b5b;
+    --bg-color: #f2edf3;
+    --sidebar-width: 260px;
+    --navbar-height: 70px;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background: var(--bg-color);
+}
+
+/* Navbar Customization */
+.navbar.default-layout-navbar {
+    background: #fff;
+    transition: background 0.25s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .navbar-brand-wrapper {
+    width: var(--sidebar-width);
+    height: var(--navbar-height);
+}
+
+.navbar .navbar-brand {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar .navbar-menu-wrapper {
+    color: #9c9fa6;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: calc(100% - var(--sidebar-width));
+}
+
+.nav-profile-img img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+
+.navbar-dropdown {
+    font-size: 0.9rem;
+    border: none;
+    box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Customization */
+.sidebar {
+    min-height: calc(100vh - var(--navbar-height));
+    background: #ffffff;
+    font-weight: 500;
+    padding: 0;
+    width: var(--sidebar-width);
+    z-index: 11;
+    transition: width 0.25s ease, background 0.25s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.sidebar .nav {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+
+.sidebar .nav-item {
+    padding: 0 2.25rem; /* Match theme padding */
+}
+
+.sidebar .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 1.125rem 0;
+    color: #3e4b5b;
+    transition-duration: 0.45s;
+    transition-property: color;
+    font-weight: 500;
+}
+
+.sidebar .nav-item.active > .nav-link {
+    color: var(--primary);
+}
+
+.sidebar .nav-item.active > .nav-link .menu-title, 
+.sidebar .nav-item.active > .nav-link .menu-icon {
+    color: var(--primary);
+}
+
+.sidebar .menu-title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.sidebar .menu-icon {
+    margin-left: auto; /* Push icon to the right if needed, or stick to left like image */
+    margin-right: 0;
+    font-size: 1.125rem;
+    line-height: 1;
+    color: #bba8bff5;
+}
+
+/* Fix for icon position in the sample image: It's actually on the right? 
+   Wait, the user image has icons on the RIGHT for some items, or standard left? 
+   Looking at the image, icons ("Basic UI Elements") seem to be on the right or indicators. 
+   Standard icons are usually left. Let's stick to standard left for main icons if "menu-icon" is widely used. 
+   Actually, in standard Purple theme, icons are on the RIGHT sometimes or left. 
+   I will stick to standard: Icon RIGHT as per some admin themes? No, usually Left.
+   Let's check the request image.
+   Image: "Basic UI Elements <Icon>" - effectively title then icon?
+   Actually, looking closely at the image:
+   "Dashboard <Home Icon>" (Icon is on the right)
+   "Weekly Sales <Chart Icon>"
+   So in the Sidebar, the text is LEFT, Icon is RIGHT.
+*/
+.sidebar .nav-link {
+    justify-content: space-between; /* This pushes text left and icon right */
+}
+
+/* Sidebar User Profile */
+.sidebar .nav-profile .nav-link {
+    display: flex;
+    margin-top: 20px;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #f3f3f3;
+}
+.sidebar .nav-profile .nav-profile-image {
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+}
+.sidebar .nav-profile .nav-profile-image img {
+    border-radius: 100%;
+    width: 100%;
+}
+.sidebar .nav-profile .nav-profile-text {
+    margin-left: 1rem;
+}
+.nav-profile-badge {
+    position: absolute;
+    right: 35px; /* Adjust based on padding */
+}
+
+
+/* Main Panel */
+.main-panel {
+    transition: width 0.25s ease, margin 0.25s ease;
+    width: calc(100% - var(--sidebar-width));
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-color);
+}
+
+.content-wrapper {
+    background: transparent;
+    padding: 2.75rem 2.25rem;
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* Dashboard Cards (If we add them later, but setting up variables) */
+.card {
+    border: 0;
+    background: #fff;
+    border-radius: 0.3125rem;
+}
+
+/* Page Header */
+.page-header {
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-title {
+    color: #343a40;
+    font-size: 1.125rem;
+    margin-bottom: 0;
+}
+.page-title .page-title-icon {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 36px;
+    box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
+}
+.bg-gradient-primary {
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+
+/* Auth Login */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #f2edf3;
+}
+.auth-form-light {
+    background: #ffffff;
+    padding: 40px;
+}
+.auth-form-light .brand-logo {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.auth-form-light h4 {
+    font-size: 1.13rem;
+    font-weight: 600;
+}
+.auth-form-light h6 {
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: #9c9fa6;
+}
+
+/* Utilities */
+.text-small { font-size: 0.875rem; }
