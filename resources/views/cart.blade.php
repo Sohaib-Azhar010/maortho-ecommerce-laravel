@@ -132,7 +132,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-lg py-3 btn-block w-100 text-uppercase fw-bold" onclick="window.location='{{ url('/') }}'">Proceed To Checkout</button>
+                                    <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg py-3 btn-block w-100 text-uppercase fw-bold">Proceed To Checkout</a>
                                 </div>
                             </div>
                         </div>
