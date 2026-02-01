@@ -109,7 +109,7 @@
             
             <div class="row mt-5 pt-4 border-top">
                 <div class="col-md-12 text-center text-muted">
-                    <p>Copyright &copy; 2026 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true" style="color: var(--pharma-teal)"></i> by <a href="#" target="_blank" class="text-primary">MAORTHO</a></p>
+                    <p>Copyright &copy; 2026 All rights reserved | <a href="#" target="_blank" class="text-primary">MAORTHO</a></p>
                 </div>
             </div>
         </div>
