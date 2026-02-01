@@ -322,3 +322,56 @@ footer {
     margin-right: 10px;
     margin-top: 3px;
 }
+
+/* Contact Page Specific Styles */
+.bg-turquoise {
+    background-color: var(--pharma-teal) !important;
+}
+
+.form-control {
+    border-color: #e6e6e6;
+    height: 50px;
+}
+
+.form-control:focus {
+    border-color: var(--pharma-teal);
+    box-shadow: none;
+}
+
+textarea.form-control {
+    height: auto;
+}
+
+label.text-black {
+    font-weight: 400;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.btn-primary {
+    background-color: var(--pharma-teal);
+    border-color: var(--pharma-teal);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #4ac7b8 !important;
+    border-color: #4ac7b8 !important;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.breadcrumb a {
+    color: var(--pharma-teal);
+}
+
+.site-section {
+    padding: 7em 0;
+}
+
+@media (max-width: 767.98px) {
+    .site-section {
+        padding: 3em 0;
+    }
+}

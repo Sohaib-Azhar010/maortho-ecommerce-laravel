@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::prefix('admin')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('admin.login');
