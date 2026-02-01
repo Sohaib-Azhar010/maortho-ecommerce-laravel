@@ -27,7 +27,7 @@
                             @csrf
                             <div class="form-group mb-4">
                                 <label for="email" class="form-label text-muted small fw-bold">Email Address</label>
-                                <input type="email" name="email" class="form-control form-control-lg bg-light border-0" id="email" placeholder="Email Address" value="{{ old('email') }}" required style="font-size: 0.9rem;">
+                                <input type="email" name="email" class="form-control form-control-lg bg-light border border-secondary-subtle" id="email" placeholder="Email Address" value="{{ old('email') }}" required style="font-size: 0.9rem;">
                                 @error('email')
                                     <div class="text-danger mt-1 small"><i class="bi bi-exclamation-circle me-1"></i>{{ $message }}</div>
                                 @enderror
@@ -35,8 +35,8 @@
                             <div class="form-group mb-4">
                                 <label for="password" class="form-label text-muted small fw-bold">Password</label>
                                 <div class="input-group">
-                                    <input type="password" name="password" class="form-control form-control-lg bg-light border-0" id="password" placeholder="Password" required style="font-size: 0.9rem;">
-                                    <button class="btn btn-light border-0 password-toggle" type="button" id="togglePassword">
+                                    <input type="password" name="password" class="form-control form-control-lg bg-light border border-secondary-subtle border-end-0" id="password" placeholder="Password" required style="font-size: 0.9rem;">
+                                    <button class="btn btn-light border border-secondary-subtle border-start-0 password-toggle" type="button" id="togglePassword">
                                         <i class="bi bi-eye-slash text-muted" id="eyeIcon"></i>
                                     </button>
                                 </div>
