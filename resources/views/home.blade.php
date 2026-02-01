@@ -16,32 +16,26 @@
 </div>
 
 <!-- Features Section -->
-<div class="container">
-    <div class="row g-0">
+<div class="container features-overlap">
+    <div class="row">
         <div class="col-md-4">
             <div class="feature-box bg-teal">
-                <div class="feature-icon">
-                    <i class="fa fa-truck"></i>
-                </div>
                 <h3 class="feature-title">Free Shipping</h3>
+                <p class="feature-subtitle">Amet sit amet dolor</p>
                 <p class="feature-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="feature-box bg-green">
-                <div class="feature-icon">
-                    <i class="fa fa-refresh"></i>
-                </div>
                 <h3 class="feature-title">Season Sale 50% Off</h3>
+                <p class="feature-subtitle">Amet sit amet dolor</p>
                 <p class="feature-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="feature-box bg-yellow">
-                <div class="feature-icon">
-                    <i class="fa fa-credit-card"></i>
-                </div>
                 <h3 class="feature-title">Buy A Gift Card</h3>
+                <p class="feature-subtitle">Amet sit amet dolor</p>
                 <p class="feature-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
             </div>
         </div>

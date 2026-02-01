@@ -99,31 +99,46 @@ body {
 
 /* Features Features */
 .feature-box {
-    padding: 40px 20px;
+    padding: 40px 30px;
     text-align: center;
     color: white;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Move up to overlap hero slightly if desired, typically Pharma floats up */
+    position: relative; 
+    z-index: 2;
 }
 
 .bg-teal { background-color: var(--pharma-teal); }
 .bg-green { background-color: var(--pharma-green); }
 .bg-yellow { background-color: var(--pharma-yellow); }
 
-.feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
 }
 
-.feature-title {
-    font-size: 1.2rem;
-    font-weight: 700;
+.feature-subtitle {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
 }
 
 .feature-text {
     font-size: 0.9rem;
-    font-weight: 400;
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 /* Products */
