@@ -61,6 +61,12 @@
                             <i class="fa fa-home menu-icon"></i>
                         </a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                            <span class="menu-title">Categories</span>
+                            <i class="fa fa-list menu-icon"></i>
+                        </a>
+                    </li>
                     <!-- Removed Extraneous Links -->
                 </ul>
              </nav>

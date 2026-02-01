@@ -20,6 +20,21 @@ body {
     overflow-x: hidden;
 }
 
+/* Theme Utilities */
+.text-theme {
+    color: var(--primary) !important;
+}
+.btn-theme {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+.btn-theme:hover {
+    background-color: #884bf0;
+    border-color: #884bf0;
+    color: #fff;
+}
+
 /* Page Body Wrapper - Fix for Sidebar Gap */
 .page-body-wrapper {
     display: flex;
