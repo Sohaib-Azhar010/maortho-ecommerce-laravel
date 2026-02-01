@@ -9,9 +9,9 @@ use App\Http\Middleware\EnsureUserIsAdmin;
 
 use App\Http\Controllers\Admin\CategoryController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('admin.login');
