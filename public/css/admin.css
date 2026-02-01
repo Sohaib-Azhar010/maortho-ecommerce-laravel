@@ -168,7 +168,25 @@ body {
     order: -1;
 }
 
-/* Sidebar Profile */
+/* Placeholder Styling */
+input::placeholder {
+    color: #cbd5e0 !important; /* Lighter color */
+    opacity: 1; /* Firefox */
+}
+
+input:focus::placeholder {
+    color: transparent !important;
+}
+
+/* Password Toggle Icon */
+.password-toggle {
+    cursor: pointer;
+    background-color: transparent;
+    border-left: 0;
+}
+.password-toggle:hover {
+    color: var(--primary);
+}
 .sidebar .nav-profile .nav-link {
     display: flex;
     margin-top: 20px;
