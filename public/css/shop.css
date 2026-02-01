@@ -375,3 +375,65 @@ label.text-black {
         padding: 3em 0;
     }
 }
+
+/* Cart Table Styles */
+.site-blocks-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.site-blocks-table .table {
+    min-width: 800px;
+}
+
+.site-blocks-table thead th {
+    padding: 30px;
+    text-align: center;
+    border-width: 0px !important;
+    vertical-align: middle;
+    color: #000;
+}
+
+.site-blocks-table td {
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    color: #444;
+}
+
+.site-blocks-table .product-thumbnail {
+    width: 200px;
+}
+
+.site-blocks-table .btn-outline-primary {
+    border-color: var(--pharma-teal);
+    color: var(--pharma-teal);
+}
+
+.site-blocks-table .btn-outline-primary:hover {
+    background-color: var(--pharma-teal);
+    color: #fff;
+}
+
+.promo-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.pl-5 {
+    padding-left: 3rem !important;
+}
+
+.js-btn-minus, .js-btn-plus {
+    cursor: pointer;
+}

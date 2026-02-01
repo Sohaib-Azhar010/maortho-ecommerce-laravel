@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 
 Route::prefix('admin')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('admin.login');

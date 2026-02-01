@@ -48,7 +48,7 @@
             
             <div class="d-flex align-items-center">
                 <a href="#" class="text-dark me-3"><i class="fa fa-search"></i></a>
-                <a href="#" class="text-dark icon-bag">
+                <a href="{{ route('cart') }}" class="text-dark icon-bag">
                     <i class="fa fa-shopping-cart"></i>
                     <span class="bag-count">2</span>
                 </a>
