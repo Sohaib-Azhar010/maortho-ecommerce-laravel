@@ -92,9 +92,9 @@
 
                 <div class="d-flex flex-wrap gap-2 mb-4">
                     <a href="{{ route('cart') }}" class="btn btn-hero px-4 py-2">Add to Cart</a>
-                    <a href="{{ route('store') }}" class="btn btn-outline-dark px-4 py-2">Back to Store</a>
+                    <a href="{{ route('store') }}" class="btn btn-outline-dark btn-square px-4 py-2">Back to Store</a>
                     @if($waNumber)
-                        <a href="https://wa.me/{{ $waNumber }}?text={{ $waText }}" target="_blank" class="btn btn-outline-success px-4 py-2 d-flex align-items-center">
+                        <a href="https://wa.me/{{ $waNumber }}?text={{ $waText }}" target="_blank" class="btn btn-outline-success btn-square px-4 py-2 d-flex align-items-center">
                             <i class="fab fa-whatsapp me-2"></i> Ask on WhatsApp
                         </a>
                     @endif

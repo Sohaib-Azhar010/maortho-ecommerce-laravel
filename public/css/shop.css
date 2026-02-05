@@ -101,6 +101,10 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-square {
+    border-radius: 0;
+}
+
 /* Features Features */
 .feature-box {
     padding: 40px 30px;
