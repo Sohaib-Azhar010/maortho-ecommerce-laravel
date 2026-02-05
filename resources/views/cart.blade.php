@@ -127,6 +127,15 @@
                 return subtotal;
             };
 
+            const getTotalQuantity = () => {
+                let totalQty = 0;
+                form.querySelectorAll('.cart-qty').forEach(input => {
+                    const v = parseInt(input.value, 10);
+                    if (!isNaN(v) && v > 0) totalQty += v;
+                });
+                return totalQty;
+            };
+
             const formatPKR = (amount) => 'PKR ' + amount.toFixed(2);
 
             const updateSummary = () => {
@@ -135,6 +144,11 @@
                 const totalEl = document.querySelector('[data-cart-total] strong');
                 if (subtotalEl) subtotalEl.textContent = formatPKR(subtotal);
                 if (totalEl) totalEl.textContent = formatPKR(subtotal);
+
+                const bagCountEl = document.querySelector('.bag-count');
+                if (bagCountEl) {
+                    bagCountEl.textContent = getTotalQuantity();
+                }
             };
 
             const recalcRow = (input) => {
