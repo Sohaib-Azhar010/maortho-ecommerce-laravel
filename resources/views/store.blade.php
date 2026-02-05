@@ -29,16 +29,16 @@
                                 <span class="badge-sale">SALE</span>
                             @endif
 
-                            <div class="product-image">
+                            <a href="{{ route('products.show', $product) }}" class="d-block product-image">
                                 @if($product->image)
                                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
                                 @else
                                     <img src="https://placehold.co/300x300/f8f9fa/png?text={{ urlencode($product->title) }}" alt="{{ $product->title }}">
                                 @endif
-                            </div>
+                            </a>
 
                             <h3 class="product-title">
-                                <a href="#">{{ $product->title }}</a>
+                                <a href="{{ route('products.show', $product) }}">{{ $product->title }}</a>
                             </h3>
 
                             <p class="product-price">

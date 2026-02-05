@@ -56,4 +56,16 @@ class HomeController extends Controller
     {
         return view('checkout');
     }
+
+    public function product(Product $product)
+    {
+        $product->load('category');
+
+        $relatedProducts = Product::where('id', '!=', $product->id)
+            ->where('category_id', $product->category_id)
+            ->take(3)
+            ->get();
+
+        return view('product-show', compact('product', 'relatedProducts'));
+    }
 }

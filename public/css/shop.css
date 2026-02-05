@@ -255,6 +255,45 @@ body {
     font-size: 0.9rem;
 }
 
+.product-detail-image-wrapper {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.product-detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.product-detail-image-wrapper:hover .product-detail-image {
+    transform: scale(1.03);
+}
+
+.product-detail-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #333;
+}
+
+.product-detail-bullets li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+    color: #555;
+}
+
+.product-detail-bullets .bullet-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--pharma-teal);
+    margin-right: 8px;
+    margin-top: 6px;
+}
+
 /* Sale Badge */
 .badge-sale {
     position: absolute;
