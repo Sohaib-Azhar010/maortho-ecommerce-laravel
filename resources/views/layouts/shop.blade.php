@@ -32,10 +32,10 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">HOME</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active text-primary' : '' }}" href="{{ route('home') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">STORE</a>
+                        <a class="nav-link {{ request()->routeIs('store') ? 'active text-primary' : '' }}" href="{{ route('store') }}">STORE</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ABOUT</a>

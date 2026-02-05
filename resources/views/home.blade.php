@@ -50,75 +50,59 @@
                 <h2 class="section-title">Popular Products</h2>
             </div>
         </div>
-        <div class="row">
-            <!-- Product 1 -->
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <div class="product-card">
-                    <span class="badge-sale">SALE</span>
-                    <div class="product-image">
-                        <img src="https://placehold.co/300x300/f8f9fa/png?text=Bioderma" alt="Image">
+
+        @if(isset($featuredProducts) && $featuredProducts->count())
+            <div class="row">
+                @foreach($featuredProducts as $product)
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <div class="product-card">
+                            @if(!is_null($product->sale_price))
+                                <span class="badge-sale">SALE</span>
+                            @elseif($loop->first)
+                                <span class="badge-sale" style="background-color: var(--pharma-teal)">NEW</span>
+                            @endif
+
+                            <div class="product-image">
+                                @if($product->image)
+                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
+                                @else
+                                    <img src="https://placehold.co/300x300/f8f9fa/png?text={{ urlencode($product->title) }}" alt="{{ $product->title }}">
+                                @endif
+                            </div>
+
+                            <h3 class="product-title">
+                                <a href="#">{{ $product->title }}</a>
+                            </h3>
+
+                            <p class="product-price">
+                                @if(!is_null($product->sale_price))
+                                    @if(!is_null($product->price))
+                                        <span class="original-price">
+                                            PKR {{ number_format($product->price, 2) }}
+                                        </span>
+                                    @endif
+                                    PKR {{ number_format($product->sale_price, 2) }}
+                                @elseif(!is_null($product->price))
+                                    PKR {{ number_format($product->price, 2) }}
+                                @else
+                                    <span class="text-muted">Contact for price</span>
+                                @endif
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="product-title"><a href="#">Bioderma</a></h3>
-                    <p class="product-price"><span class="original-price">$95.00</span> $55.00</p>
+                @endforeach
+            </div>
+        @else
+            <div class="row">
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted mb-0">No featured products yet. Mark products as featured in the admin panel to showcase them here.</p>
                 </div>
             </div>
-            <!-- Product 2 -->
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://placehold.co/300x300/f8f9fa/png?text=Chanca+Piedra" alt="Image">
-                    </div>
-                    <h3 class="product-title"><a href="#">Chanca Piedra</a></h3>
-                    <p class="product-price">$70.00</p>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://placehold.co/300x300/f8f9fa/png?text=Umcka+Cold+Care" alt="Image">
-                    </div>
-                    <h3 class="product-title"><a href="#">Umcka Cold Care</a></h3>
-                    <p class="product-price">$120.00</p>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://placehold.co/300x300/f8f9fa/png?text=Cetyl+Pure" alt="Image">
-                    </div>
-                    <h3 class="product-title"><a href="#">Cetyl Pure</a></h3>
-                    <p class="product-price"><span class="original-price">$45.00</span> $20.00</p>
-                </div>
-            </div>
-            <!-- Product 5 -->
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <div class="product-card">
-                    <span class="badge-sale">SALE</span>
-                    <div class="product-image">
-                        <img src="https://placehold.co/300x300/f8f9fa/png?text=CLA+Core" alt="Image">
-                    </div>
-                    <h3 class="product-title"><a href="#">CLA Core</a></h3>
-                    <p class="product-price">$38.00</p>
-                </div>
-            </div>
-            <!-- Product 6 -->
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <div class="product-card">
-                    <span class="badge-sale" style="background-color: var(--pharma-teal)">NEW</span>
-                    <div class="product-image">
-                        <img src="https://placehold.co/300x300/f8f9fa/png?text=Poo+Pourri" alt="Image">
-                    </div>
-                    <h3 class="product-title"><a href="#">Poo Pourri</a></h3>
-                    <p class="product-price">$89.00</p>
-                </div>
-            </div>
-        </div>
+        @endif
         
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <a href="#" class="btn btn-hero">View All Products</a>
+                <a href="{{ route('store') }}" class="btn btn-hero">View All Products</a>
             </div>
         </div>
     </div>
@@ -135,7 +119,7 @@
                         <img src="https://placehold.co/300x400/transparent/000?text=Product+1" alt="Image" class="img-fluid" style="max-height: 350px;">
                     </a>
                     <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                    <p class="price">$120.00</p>
+                    <p class="price">PKR 120.00</p>
                 </div>
              </div>
              <div class="col-lg-6 mb-5 mb-lg-0" style="position: relative;">
@@ -144,7 +128,7 @@
                         <img src="https://placehold.co/300x400/transparent/000?text=Product+2" alt="Image" class="img-fluid" style="max-height: 350px;">
                     </a>
                     <h3 class="text-dark"><a href="#">Cetyl Pure</a></h3>
-                    <p class="price">$120.00</p>
+                    <p class="price">PKR 120.00</p>
                  </div>
              </div>
          </div>

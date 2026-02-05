@@ -67,6 +67,12 @@
                             <i class="fa fa-list menu-icon"></i>
                         </a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.products.index') }}">
+                            <span class="menu-title">Products</span>
+                            <i class="fa fa-box menu-icon"></i>
+                        </a>
+                    </li>
                     <!-- Removed Extraneous Links -->
                 </ul>
              </nav>
@@ -87,5 +93,7 @@
     <!-- jQuery Optional but used in script wrapper, lets use vanilla approach or add CDN if needed for plugins later. Keeping vanilla mostly. -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
+
+    @stack('scripts')
 </body>
 </html>

@@ -2,13 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $featuredProducts = Product::where('is_featured', true)
+            ->orderByDesc('id')
+            ->take(6)
+            ->get();
+
+        return view('home', compact('featuredProducts'));
+    }
+
+    public function store(Request $request)
+    {
+        $categories = Category::orderBy('name')->get();
+
+        $productsQuery = Product::with('category')->orderByDesc('id');
+
+        $activeCategory = null;
+        if ($request->filled('category')) {
+            $activeCategory = $categories->firstWhere('id', (int) $request->input('category'));
+
+            if ($activeCategory) {
+                $productsQuery->where('category_id', $activeCategory->id);
+            }
+        }
+
+        $products = $productsQuery->paginate(12)->withQueryString();
+
+        return view('store', [
+            'products' => $products,
+            'categories' => $categories,
+            'activeCategory' => $activeCategory,
+        ]);
     }
 
     public function contact()
