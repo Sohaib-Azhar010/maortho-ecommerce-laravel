@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'whatsapp' => [
+        // Set WHATSAPP_NUMBER=923001234567 in your .env (country code + number, no + sign)
+        'number' => env('WHATSAPP_NUMBER'),
+    ],
+
 ];

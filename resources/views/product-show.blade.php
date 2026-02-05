@@ -37,6 +37,11 @@
                 @endif
             </div>
             <div class="col-md-6">
+                @php
+                    $waNumber = config('services.whatsapp.number');
+                    $productUrl = route('products.show', $product);
+                    $waText = rawurlencode("Hi, I have a question about {$product->title} ({$productUrl})");
+                @endphp
                 <h1 class="h3 mb-3">{{ $product->title }}</h1>
 
                 @if($product->category)
@@ -88,6 +93,11 @@
                 <div class="d-flex flex-wrap gap-2 mb-4">
                     <a href="{{ route('cart') }}" class="btn btn-hero px-4 py-2">Add to Cart</a>
                     <a href="{{ route('store') }}" class="btn btn-outline-dark px-4 py-2">Back to Store</a>
+                    @if($waNumber)
+                        <a href="https://wa.me/{{ $waNumber }}?text={{ $waText }}" target="_blank" class="btn btn-outline-success px-4 py-2 d-flex align-items-center">
+                            <i class="fab fa-whatsapp me-2"></i> Ask on WhatsApp
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -99,7 +109,7 @@
                 </div>
                 @foreach($relatedProducts as $related)
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <div class="product-card">
+                        <div class="product-card position-relative">
                             <a href="{{ route('products.show', $related) }}" class="d-block product-image">
                                 @if($related->image)
                                     <img src="{{ asset('storage/' . $related->image) }}" alt="{{ $related->title }}">
@@ -110,6 +120,19 @@
                             <h3 class="product-title">
                                 <a href="{{ route('products.show', $related) }}">{{ $related->title }}</a>
                             </h3>
+
+                            @php
+                                $waNumber = config('services.whatsapp.number');
+                                $relatedUrl = route('products.show', $related);
+                                $waRelatedText = rawurlencode("Hi, I have a question about {$related->title} ({$relatedUrl})");
+                            @endphp
+                            @if($waNumber)
+                                <a href="https://wa.me/{{ $waNumber }}?text={{ $waRelatedText }}"
+                                   target="_blank"
+                                   class="product-whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            @endif
                             <p class="product-price">
                                 @if(!is_null($related->sale_price))
                                     @if(!is_null($related->price))

@@ -55,7 +55,7 @@
             <div class="row">
                 @foreach($featuredProducts as $product)
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <div class="product-card">
+                        <div class="product-card position-relative">
                             @if(!is_null($product->sale_price))
                                 <span class="badge-sale">SALE</span>
                             @elseif($loop->first)
@@ -69,6 +69,19 @@
                                     <img src="https://placehold.co/300x300/f8f9fa/png?text={{ urlencode($product->title) }}" alt="{{ $product->title }}">
                                 @endif
                             </a>
+
+                            @php
+                                $waNumber = config('services.whatsapp.number');
+                                $productUrl = route('products.show', $product);
+                                $waText = rawurlencode("Hi, I have a question about {$product->title} ({$productUrl})");
+                            @endphp
+                            @if($waNumber)
+                                <a href="https://wa.me/{{ $waNumber }}?text={{ $waText }}"
+                                   target="_blank"
+                                   class="product-whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            @endif
 
                             <h3 class="product-title">
                                 <a href="{{ route('products.show', $product) }}">{{ $product->title }}</a>
