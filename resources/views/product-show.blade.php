@@ -24,12 +24,17 @@
 
         <div class="row">
             <div class="col-md-6 mb-4">
-                @php
-                    $detailImage = $product->table_image ?: $product->image;
-                @endphp
-                <a href="{{ asset('storage/' . $detailImage) }}" target="_blank" class="d-block product-detail-image-wrapper">
-                    <img src="{{ asset('storage/' . $detailImage) }}" alt="{{ $product->title }}" class="img-fluid product-detail-image">
+                <a href="{{ asset('storage/' . $product->image) }}" target="_blank" class="d-block product-detail-image-wrapper mb-4">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}" class="img-fluid product-detail-image">
                 </a>
+
+                @if($product->table_image)
+                    <div class="product-table-image-wrapper text-center">
+                        <a href="{{ asset('storage/' . $product->table_image) }}" target="_blank" class="d-inline-block w-100 h-100">
+                            <img src="{{ asset('storage/' . $product->table_image) }}" alt="{{ $product->title }} table image" class="product-table-image">
+                        </a>
+                    </div>
+                @endif
             </div>
             <div class="col-md-6">
                 <h1 class="h3 mb-3">{{ $product->title }}</h1>

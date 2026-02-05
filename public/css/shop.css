@@ -295,6 +295,26 @@ body {
     margin-top: 6px;
 }
 
+.product-table-image-wrapper {
+    max-width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+.product-table-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.product-table-image-wrapper:hover .product-table-image {
+    transform: scale(1.03);
+}
+
 /* Sale Badge */
 .badge-sale {
     position: absolute;
