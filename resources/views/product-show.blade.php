@@ -24,8 +24,11 @@
 
         <div class="row">
             <div class="col-md-6 mb-4">
-                <a href="{{ asset('storage/' . $product->image) }}" target="_blank" class="d-block product-detail-image-wrapper">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}" class="img-fluid product-detail-image">
+                @php
+                    $detailImage = $product->table_image ?: $product->image;
+                @endphp
+                <a href="{{ asset('storage/' . $detailImage) }}" target="_blank" class="d-block product-detail-image-wrapper">
+                    <img src="{{ asset('storage/' . $detailImage) }}" alt="{{ $product->title }}" class="img-fluid product-detail-image">
                 </a>
             </div>
             <div class="col-md-6">
