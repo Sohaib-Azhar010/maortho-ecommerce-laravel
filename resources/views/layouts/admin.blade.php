@@ -73,6 +73,12 @@
                             <i class="fa fa-box menu-icon"></i>
                         </a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('admin.feedback.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.feedback.index') }}">
+                            <span class="menu-title">Feedback</span>
+                            <i class="fa fa-comments menu-icon"></i>
+                        </a>
+                    </li>
                     <!-- Removed Extraneous Links -->
                 </ul>
              </nav>

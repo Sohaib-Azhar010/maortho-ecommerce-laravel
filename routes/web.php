@@ -13,11 +13,14 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FeedbackController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/store', [HomeController::class, 'store'])->name('store');
 Route::get('/products/{product}', [HomeController::class, 'product'])->name('products.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 // Cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
@@ -44,5 +47,10 @@ Route::prefix('admin')->group(function () {
 
         // Products
         Route::resource('products', ProductController::class)->names('admin.products');
+
+        // Feedback moderation
+        Route::resource('feedback', \App\Http\Controllers\Admin\FeedbackController::class)
+            ->only(['index', 'update'])
+            ->names('admin.feedback');
     });
 });

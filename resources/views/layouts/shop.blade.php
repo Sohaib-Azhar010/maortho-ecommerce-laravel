@@ -43,6 +43,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('contact') ? 'active text-primary' : '' }}" href="{{ route('contact') }}">CONTACT</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('feedback.create') ? 'active text-primary' : '' }}" href="{{ route('feedback.create') }}">FEEDBACK</a>
+                    </li>
                 </ul>
             </div>
             

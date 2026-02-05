@@ -359,6 +359,28 @@ body {
     box-shadow: 0 10px 24px rgba(0,0,0,0.22);
 }
 
+/* Feedback Stars */
+.feedback-stars {
+    display: inline-flex;
+    gap: 6px;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.feedback-star {
+    color: #e5e7eb;
+    transition: color 0.2s, transform 0.1s;
+}
+
+.feedback-star.active,
+.feedback-star.hover {
+    color: var(--pharma-teal);
+}
+
+.feedback-star:hover {
+    transform: scale(1.1);
+}
+
 /* Testimonials */
 .testimonial-card {
     text-align: center;
