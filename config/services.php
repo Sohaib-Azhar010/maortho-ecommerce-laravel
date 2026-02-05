@@ -40,4 +40,12 @@ return [
         'number' => env('WHATSAPP_NUMBER'),
     ],
 
+    'payfast' => [
+        'base_url' => env('PAYFAST_BASE_URL', ''),
+        'merchant_id' => env('PAYFAST_MERCHANT_ID', ''),
+        'secured_key' => env('PAYFAST_SECURED_KEY', ''),
+        'hash_key' => env('PAYFAST_HASH_KEY'),
+        'merCatCode' => env('PAYFAST_MERCHANT_CAT_CODE', ''),
+    ],
+
 ];

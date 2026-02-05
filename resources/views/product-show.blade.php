@@ -91,7 +91,10 @@
                 @endif
 
                 <div class="d-flex flex-wrap gap-2 mb-4">
-                    <a href="{{ route('cart') }}" class="btn btn-hero px-4 py-2">Add to Cart</a>
+                    <form action="{{ route('cart.add', $product) }}" method="POST" class="me-2">
+                        @csrf
+                        <button type="submit" class="btn btn-hero btn-square px-4 py-2">Add to Cart</button>
+                    </form>
                     <a href="{{ route('store') }}" class="btn btn-outline-dark btn-square px-4 py-2">Back to Store</a>
                     @if($waNumber)
                         <a href="https://wa.me/{{ $waNumber }}?text={{ $waText }}" target="_blank" class="btn btn-outline-success btn-square px-4 py-2 d-flex align-items-center">

@@ -16,7 +16,8 @@
     <div class="site-section py-5">
         <div class="container">
             <div class="row mb-5">
-                <form class="col-md-12" method="post">
+                <form class="col-md-12" method="post" action="{{ route('cart.update') }}">
+                    @csrf
                     <div class="site-blocks-table">
                         <table class="table table-bordered">
                             <thead>
@@ -30,51 +31,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <img src="https://via.placeholder.com/150" alt="Ibuprofen" class="img-fluid">
-                                    </td>
-                                    <td class="product-name">
-                                        <h2 class="h5 text-black">Ibuprofen</h2>
-                                    </td>
-                                    <td>$55.00</td>
-                                    <td>
-                                        <div class="input-group mb-3 mx-auto" style="max-width: 120px;">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                @forelse($cartItems as $productId => $item)
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            @if(!empty($item['image']))
+                                                <img src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['title'] }}" class="img-fluid">
+                                            @else
+                                                <img src="https://placehold.co/150x150" alt="{{ $item['title'] }}" class="img-fluid">
+                                            @endif
+                                        </td>
+                                        <td class="product-name">
+                                            <h2 class="h5 text-black">{{ $item['title'] }}</h2>
+                                        </td>
+                                        <td>PKR {{ number_format($item['price'], 2) }}</td>
+                                        <td>
+                                            <div class="input-group mb-3 mx-auto" style="max-width: 120px;">
+                                                <input type="number"
+                                                       name="quantities[{{ $productId }}]"
+                                                       class="form-control text-center"
+                                                       min="0"
+                                                       value="{{ $item['quantity'] }}">
                                             </div>
-                                            <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>$49.00</td>
-                                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <img src="https://via.placeholder.com/150" alt="Bioderma" class="img-fluid">
-                                    </td>
-                                    <td class="product-name">
-                                        <h2 class="h5 text-black">Bioderma</h2>
-                                    </td>
-                                    <td>$49.00</td>
-                                    <td>
-                                        <div class="input-group mb-3 mx-auto" style="max-width: 120px;">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                            </div>
-                                            <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>$49.00</td>
-                                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                                </tr>
+                                        </td>
+                                        <td>PKR {{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" type="submit" name="remove" value="{{ $productId }}" onclick="return confirm('Remove this item from cart?')">X</button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center py-5">
+                                            <p class="text-muted mb-0">Your cart is empty.</p>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -86,7 +76,7 @@
                 <div class="col-md-6">
                     <div class="row mb-5">
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <button class="btn btn-primary btn-sm btn-block w-100 py-3 text-uppercase fw-bold">Update Cart</button>
+                            <button class="btn btn-primary btn-sm btn-block w-100 py-3 text-uppercase fw-bold" type="submit">Update Cart</button>
                         </div>
                         <div class="col-md-6">
                             <button class="btn btn-outline-primary btn-sm btn-block w-100 py-3 text-uppercase fw-bold">Continue Shopping</button>
@@ -118,7 +108,7 @@
                                     <span class="text-black">Subtotal</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">$230.00</strong>
+                                    <strong class="text-black">PKR {{ number_format($subtotal, 2) }}</strong>
                                 </div>
                             </div>
                             <div class="row mb-5">
@@ -126,7 +116,7 @@
                                     <span class="text-black">Total</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">$230.00</strong>
+                                    <strong class="text-black">PKR {{ number_format($subtotal, 2) }}</strong>
                                 </div>
                             </div>
 
