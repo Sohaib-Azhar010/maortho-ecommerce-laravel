@@ -16,7 +16,7 @@
     <div class="site-section py-5">
         <div class="container">
             <div class="row mb-5">
-                <form class="col-md-12" method="post" action="{{ route('cart.update') }}">
+                <form id="cart-form" class="col-md-12" method="post" action="{{ route('cart.update') }}">
                     @csrf
                     <div class="site-blocks-table">
                         <table class="table table-bordered">
@@ -32,7 +32,7 @@
                             </thead>
                             <tbody>
                                 @forelse($cartItems as $productId => $item)
-                                    <tr>
+                                    <tr data-price="{{ $item['price'] }}" data-row-total="{{ $item['price'] * $item['quantity'] }}">
                                         <td class="product-thumbnail">
                                             @if(!empty($item['image']))
                                                 <img src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['title'] }}" class="img-fluid">
@@ -48,14 +48,14 @@
                                             <div class="input-group mb-3 mx-auto" style="max-width: 120px;">
                                                 <input type="number"
                                                        name="quantities[{{ $productId }}]"
-                                                       class="form-control text-center"
+                                                       class="form-control text-center cart-qty"
                                                        min="0"
                                                        value="{{ $item['quantity'] }}">
                                             </div>
                                         </td>
-                                        <td>PKR {{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+                                        <td data-row-total-display>PKR {{ number_format($item['price'] * $item['quantity'], 2) }}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm" type="submit" name="remove" value="{{ $productId }}" onclick="return confirm('Remove this item from cart?')">X</button>
+                                            <button class="btn btn-primary btn-sm cart-remove-btn" type="button" data-product-id="{{ $productId }}">X</button>
                                         </td>
                                     </tr>
                                 @empty
@@ -71,31 +71,8 @@
                 </form>
             </div>
 
-            <!-- Update Cart / Continue Shopping -->
             <div class="row">
-                <div class="col-md-6">
-                    <div class="row mb-5">
-                        <div class="col-md-6 mb-3 mb-md-0">
-                            <button class="btn btn-primary btn-sm btn-block w-100 py-3 text-uppercase fw-bold" type="submit">Update Cart</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-outline-primary btn-sm btn-block w-100 py-3 text-uppercase fw-bold">Continue Shopping</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="text-black h4" for="coupon">Coupon</label>
-                            <p>Enter your coupon code if you have one.</p>
-                        </div>
-                        <div class="col-md-8 mb-3 mb-md-0">
-                            <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-primary btn-md w-100 py-3">Apply Coupon</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 pl-5">
+                <div class="col-md-6 offset-md-6 pl-5">
                     <div class="row justify-content-end">
                         <div class="col-md-7">
                             <div class="row">
@@ -107,16 +84,16 @@
                                 <div class="col-md-6">
                                     <span class="text-black">Subtotal</span>
                                 </div>
-                                <div class="col-md-6 text-right">
-                                    <strong class="text-black">PKR {{ number_format($subtotal, 2) }}</strong>
+                                        <div class="col-md-6 text-right" data-cart-subtotal>
+                                            <strong class="text-black">PKR {{ number_format($subtotal, 2) }}</strong>
                                 </div>
                             </div>
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <span class="text-black">Total</span>
                                 </div>
-                                <div class="col-md-6 text-right">
-                                    <strong class="text-black">PKR {{ number_format($subtotal, 2) }}</strong>
+                                        <div class="col-md-6 text-right" data-cart-total>
+                                            <strong class="text-black">PKR {{ number_format($subtotal, 2) }}</strong>
                                 </div>
                             </div>
 
@@ -131,28 +108,95 @@
             </div>
         </div>
     </div>
-
-    <!-- Promo Section -->
-    <div class="site-section bg-turquoise py-5">
-        <div class="container">
-            <div class="row align-items-stretch">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="promo-card p-5 h-100 bg-white rounded shadow-sm d-flex align-items-center" style="background-image: url('https://via.placeholder.com/600x400'); background-size: cover; background-position: center;">
-                        <div class="promo-text-content p-4" style="background: rgba(255,255,255,0.8); border-radius: 10px;">
-                            <h2 class="h3 text-black text-uppercase fw-bold mb-3">Pharma Products</h2>
-                            <p class="text-muted pb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates sed dolorum excepturi rem odio voluptatem.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="promo-card p-5 h-100 bg-white rounded shadow-sm d-flex align-items-center" style="background-image: url('https://via.placeholder.com/600x400'); background-size: cover; background-position: center;">
-                        <div class="promo-text-content p-4" style="background: rgba(255,255,255,0.8); border-radius: 10px;">
-                            <h2 class="h3 text-black text-uppercase fw-bold mb-3">Rated By Experts</h2>
-                            <p class="text-muted pb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates sed dolorum excepturi rem odio voluptatem.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('cart-form');
+            if (!form) return;
+
+            const qtyInputs = form.querySelectorAll('.cart-qty');
+
+            const getRowTotals = () => {
+                let subtotal = 0;
+                form.querySelectorAll('tr[data-price]').forEach(row => {
+                    const total = parseFloat(row.dataset.rowTotal || '0');
+                    subtotal += total;
+                });
+                return subtotal;
+            };
+
+            const formatPKR = (amount) => 'PKR ' + amount.toFixed(2);
+
+            const updateSummary = () => {
+                const subtotal = getRowTotals();
+                const subtotalEl = document.querySelector('[data-cart-subtotal] strong');
+                const totalEl = document.querySelector('[data-cart-total] strong');
+                if (subtotalEl) subtotalEl.textContent = formatPKR(subtotal);
+                if (totalEl) totalEl.textContent = formatPKR(subtotal);
+            };
+
+            const recalcRow = (input) => {
+                const row = input.closest('tr[data-price]');
+                if (!row) return;
+                const price = parseFloat(row.dataset.price || '0');
+                let qty = parseInt(input.value, 10);
+                if (isNaN(qty) || qty < 0) qty = 0;
+                input.value = qty;
+                const rowTotal = price * qty;
+                row.dataset.rowTotal = rowTotal;
+                const totalCell = row.querySelector('[data-row-total-display]');
+                if (totalCell) totalCell.textContent = formatPKR(rowTotal);
+            };
+
+            let debounceTimer;
+            const syncServer = () => {
+                const fd = new FormData(form);
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json',
+                    },
+                    body: fd,
+                }).catch(() => {
+                    // Silent fail; session update is best-effort
+                });
+            };
+
+            qtyInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    recalcRow(input);
+                    updateSummary();
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(syncServer, 300);
+                });
+            });
+
+            form.querySelectorAll('.cart-remove-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (!confirm('Remove this item from cart?')) return;
+                    const productId = btn.dataset.productId;
+                    const row = btn.closest('tr[data-price]');
+                    if (row) {
+                        row.remove();
+                    }
+                    // add hidden input to set quantity 0
+                    const hidden = document.createElement('input');
+                    hidden.type = 'hidden';
+                    hidden.name = `quantities[${productId}]`;
+                    hidden.value = '0';
+                    form.appendChild(hidden);
+
+                    updateSummary();
+                    syncServer();
+                });
+            });
+
+            // Initial summary fix
+            updateSummary();
+        });
+    </script>
+@endpush
