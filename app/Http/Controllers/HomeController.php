@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,7 +16,12 @@ class HomeController extends Controller
             ->take(6)
             ->get();
 
-        return view('home', compact('featuredProducts'));
+        $feedback = Feedback::where('show_on_site', true)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('home', compact('featuredProducts', 'feedback'));
     }
 
     public function store(Request $request)

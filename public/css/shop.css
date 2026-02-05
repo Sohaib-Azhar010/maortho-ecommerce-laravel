@@ -409,6 +409,15 @@ body {
     color: #999;
 }
 
+.testimonial-stars {
+    font-size: 1.4rem;
+    color: #e5e7eb;
+}
+
+.testimonial-stars .active {
+    color: var(--pharma-teal);
+}
+
 /* Promo Blocks */
 .promo-block {
     height: 400px;

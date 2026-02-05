@@ -148,36 +148,32 @@
      </div>
 </div>
 
-<!-- Testimonials -->
+<!-- Feedback -->
 <div class="site-section mt-5 pt-5 pb-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="section-title mb-5">Testimonials</h2>
+                <h2 class="section-title mb-5">Feedback</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="testimonial-card bg-white shadow-sm rounded">
-                    <img src="https://placehold.co/100x100/e9ecef/777?text=Person1" alt="Image" class="testimonial-avatar">
-                    <p class="testimonial-text">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, ipsum! Dolores, distinctio. Quam, nemo, provident.&rdquo;</p>
-                    <p class="testimonial-author">&mdash; Kelly Holmes</p>
+            @forelse($feedback ?? [] as $item)
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="testimonial-card bg-white shadow-sm rounded">
+                        <div class="testimonial-stars mb-3">
+                            @for($i = 1; $i <= 5; $i++)
+                                <span class="{{ $i <= $item->rating ? 'active' : '' }}">★</span>
+                            @endfor
+                        </div>
+                        <p class="testimonial-text">&ldquo;{{ $item->description }}&rdquo;</p>
+                        <p class="testimonial-author">&mdash; {{ $item->name }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="testimonial-card bg-white shadow-sm rounded">
-                    <img src="https://placehold.co/100x100/e9ecef/777?text=Person2" alt="Image" class="testimonial-avatar">
-                    <p class="testimonial-text">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, ipsum! Dolores, distinctio. Quam, nemo, provident.&rdquo;</p>
-                    <p class="testimonial-author">&mdash; Rebecca Morando</p>
+            @empty
+                <div class="col-12 text-center">
+                    <p class="text-muted mb-0">No feedback available yet.</p>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="testimonial-card bg-white shadow-sm rounded">
-                    <img src="https://placehold.co/100x100/e9ecef/777?text=Person3" alt="Image" class="testimonial-avatar">
-                    <p class="testimonial-text">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, ipsum! Dolores, distinctio. Quam, nemo, provident.&rdquo;</p>
-                    <p class="testimonial-author">&mdash; Lucas Gallone</p>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </div>
