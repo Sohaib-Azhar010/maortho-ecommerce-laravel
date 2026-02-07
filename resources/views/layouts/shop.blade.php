@@ -77,10 +77,11 @@
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="#">Supplements</a></li>
-                        <li><a href="#">Vitamins</a></li>
-                        <li><a href="#">Diet Nutrition</a></li>
-                        <li><a href="#">Tea & Coffee</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('store') }}">Store</a></li>
+                        <li><a href="{{ route('about') }}">About</a></li>
+                        <li><a href="{{ route('contact') }}">Contact</a></li>
+                        <li><a href="{{ route('feedback.create') }}">Feedback</a></li>
                     </ul>
                 </div>
                 
