@@ -79,6 +79,18 @@
                             <i class="fa fa-comments menu-icon"></i>
                         </a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.messages.index') }}">
+                            <span class="menu-title">Messages</span>
+                            <i class="fa fa-envelope menu-icon"></i>
+                            @php
+                                $unreadCount = \App\Models\Message::where('is_read', false)->count();
+                            @endphp
+                            @if($unreadCount > 0)
+                                <span class="badge bg-danger ms-2">{{ $unreadCount }}</span>
+                            @endif
+                        </a>
+                    </li>
                     <!-- Removed Extraneous Links -->
                 </ul>
              </nav>

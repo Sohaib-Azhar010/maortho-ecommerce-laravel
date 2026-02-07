@@ -14,11 +14,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/store', [HomeController::class, 'store'])->name('store');
 Route::get('/products/{product}', [HomeController::class, 'product'])->name('products.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 // Cart
@@ -52,5 +54,10 @@ Route::prefix('admin')->group(function () {
         Route::resource('feedback', \App\Http\Controllers\Admin\FeedbackController::class)
             ->only(['index', 'update'])
             ->names('admin.feedback');
+
+        // Messages
+        Route::get('messages/{message}/read', [\App\Http\Controllers\Admin\MessageController::class, 'markAsRead'])->name('admin.messages.read');
+        Route::get('messages/{message}/unread', [\App\Http\Controllers\Admin\MessageController::class, 'markAsUnread'])->name('admin.messages.unread');
+        Route::resource('messages', \App\Http\Controllers\Admin\MessageController::class)->names('admin.messages');
     });
 });
