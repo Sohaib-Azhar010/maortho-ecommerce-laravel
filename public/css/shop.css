@@ -538,6 +538,16 @@ label.text-black {
     color: var(--pharma-teal);
 }
 
+.breadcrumb-link {
+    color: var(--pharma-teal) !important;
+    text-decoration: none !important;
+}
+
+.breadcrumb-link:hover {
+    color: var(--pharma-teal) !important;
+    text-decoration: none !important;
+}
+
 .site-section {
     padding: 7em 0;
 }

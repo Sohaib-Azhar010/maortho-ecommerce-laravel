@@ -7,11 +7,11 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent px-0 mb-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('store') }}">Store</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}" class="breadcrumb-link">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('store') }}" class="breadcrumb-link">Store</a></li>
                         @if($product->category)
                             <li class="breadcrumb-item">
-                                <a href="{{ route('store', ['category' => $product->category_id]) }}">
+                                <a href="{{ route('store', ['category' => $product->category_id]) }}" class="breadcrumb-link">
                                     {{ $product->category->name }}
                                 </a>
                             </li>
