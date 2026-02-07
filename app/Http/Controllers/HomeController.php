@@ -58,6 +58,21 @@ class HomeController extends Controller
         return view('about');
     }
 
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function refund()
+    {
+        return view('refund');
+    }
+
+    public function shipping()
+    {
+        return view('shipping');
+    }
+
     public function cart()
     {
         return view('cart');

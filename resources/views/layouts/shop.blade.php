@@ -86,12 +86,11 @@
                 </div>
                 
                 <div class="col-lg-2 col-md-4 mb-4">
-                    <h5 class="footer-heading">My Account</h5>
+                    <h5 class="footer-heading">Policies</h5>
                     <ul class="footer-links">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Order History</a></li>
+                        <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
+                        <li><a href="{{ route('refund') }}">Refund or Return Policy</a></li>
+                        <li><a href="{{ route('shipping') }}">Shipping Policy</a></li>
                     </ul>
                 </div>
                 
@@ -104,7 +103,7 @@
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
-                            <span>03448261083</span>
+                            <span>+92 344 8261083</span>
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i>
@@ -116,7 +115,7 @@
             
             <div class="row mt-5 pt-4 border-top">
                 <div class="col-md-12 text-center text-muted">
-                    <p>Copyright &copy; 2026 All rights reserved | <a href="#" target="_blank" class="text-primary">MAORTHO</a></p>
+                    <p>Copyright &copy; 2026 All rights reserved | <a href="#" target="_blank" class="text-teal" style="text-decoration: none;">MAORTHO</a></p>
                 </div>
             </div>
         </div>
