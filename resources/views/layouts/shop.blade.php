@@ -99,11 +99,11 @@
                     <ul class="footer-links contact-info">
                         <li>
                             <i class="fa fa-map-marker-alt"></i>
-                            <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
+                            <span>97 C Hhajvary Scheme, Near Hurbanspura, Lahore</span>
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
-                            <span>+2 392 3929 210</span>
+                            <span>03448261083</span>
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i>
