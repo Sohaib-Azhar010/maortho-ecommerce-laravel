@@ -122,26 +122,17 @@
 </div>
 
 <!-- Promo Section -->
-<div class="site-section bg-secondary bg-image" style="background-image: url('https://placehold.co/1920x600/f1f8e9/f1f8e9'); height: 400px; display: flex; align-items: center; position: relative;">
+<div class="site-section promo-images-section py-5">
      <div class="container">
-         <div class="row align-items-stretch">
-             <!-- Fake separation for design -->
-             <div class="col-lg-6 mb-5 mb-lg-0 " style="position: relative;">
+         <div class="row align-items-center">
+             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="text-center">
-                    <a href="#" class="d-block product-image" style="background: none; height: auto;">
-                        <img src="https://placehold.co/300x400/transparent/000?text=Product+1" alt="Image" class="img-fluid" style="max-height: 350px;">
-                    </a>
-                    <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                    <p class="price">PKR 120.00</p>
+                    <img src="{{ asset('images/left.jpg') }}" alt="Left Image" class="promo-image">
                 </div>
              </div>
-             <div class="col-lg-6 mb-5 mb-lg-0" style="position: relative;">
+             <div class="col-lg-6">
                 <div class="text-center">
-                    <a href="#" class="d-block product-image" style="background: none; height: auto;">
-                        <img src="https://placehold.co/300x400/transparent/000?text=Product+2" alt="Image" class="img-fluid" style="max-height: 350px;">
-                    </a>
-                    <h3 class="text-dark"><a href="#">Cetyl Pure</a></h3>
-                    <p class="price">PKR 120.00</p>
+                    <img src="{{ asset('images/right.jpg') }}" alt="Right Image" class="promo-image">
                  </div>
              </div>
          </div>

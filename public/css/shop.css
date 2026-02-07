@@ -609,3 +609,15 @@ label.text-black {
 .js-btn-minus, .js-btn-plus {
     cursor: pointer;
 }
+
+/* Promo Images Section */
+.promo-images-section {
+    background-color: #f8fdf9;
+}
+
+.promo-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
