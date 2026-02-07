@@ -621,3 +621,14 @@ label.text-black {
     object-fit: cover;
     border-radius: 8px;
 }
+
+/* About Page Styles */
+.feature-box-about {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.feature-box-about:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

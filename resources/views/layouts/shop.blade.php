@@ -38,7 +38,7 @@
                         <a class="nav-link {{ request()->routeIs('store') ? 'active text-primary' : '' }}" href="{{ route('store') }}">STORE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active text-primary' : '' }}" href="{{ route('about') }}">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('contact') ? 'active text-primary' : '' }}" href="{{ route('contact') }}">CONTACT</a>
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h5 class="footer-heading">About Us</h5>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates sed dolorum excepturi iure eaque, aut unde.</p>
+                    <p class="text-muted">MAORTHO is your trusted partner for premium orthopedic equipment and supports. We specialize in high-quality products designed to aid in recovery, provide comfort, and enhance mobility. Our mission is to provide accessible, high-quality orthopedic solutions that help individuals recover from injuries and maintain optimal musculoskeletal health.</p>
                 </div>
                 
                 <div class="col-lg-2 col-md-4 mb-4">

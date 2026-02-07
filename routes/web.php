@@ -19,6 +19,7 @@ use App\Http\Controllers\ContactController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/store', [HomeController::class, 'store'])->name('store');
 Route::get('/products/{product}', [HomeController::class, 'product'])->name('products.show');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
