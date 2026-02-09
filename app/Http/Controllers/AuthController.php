@@ -67,4 +67,32 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function redirectToGoogle()
+    {
+        return \Laravel\Socialite\Facades\Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $googleUser = \Laravel\Socialite\Facades\Socialite::driver('google')->user();
+            
+            $user = User::updateOrCreate([
+                'email' => $googleUser->email,
+            ], [
+                'name' => $googleUser->name,
+                'google_id' => $googleUser->id,
+                'avatar' => $googleUser->avatar,
+                'password' => \Illuminate\Support\Facades\Hash::make(\Illuminate\Support\Str::random(24)), // Random password for social users
+                'role' => 'user',
+            ]);
+
+            Auth::login($user);
+
+            return redirect()->route('home');
+        } catch (\Exception $e) {
+            return redirect()->route('login')->with('error', 'Google authentication failed.');
+        }
+    }
 }
