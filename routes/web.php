@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\EnsureUserIsAdmin;
 
@@ -27,26 +28,43 @@ Route::get('/shipping', [HomeController::class, 'shipping'])->name('shipping');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
-// Cart
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
-Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+// Cart & Checkout (Auth Required)
+Route::middleware('auth')->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
 
-// Checkout & PayFast payment
-Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout');
-Route::post('/checkout/payfast', [CheckoutController::class, 'startPayFast'])->name('checkout.payfast');
-Route::get('/checkout/otp/{order}', [CheckoutController::class, 'showOtpForm'])->name('checkout.otp');
-Route::post('/checkout/otp/{order}', [CheckoutController::class, 'confirmPayFast'])->name('checkout.otp.confirm');
-Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout');
+    Route::post('/checkout/payfast', [CheckoutController::class, 'startPayFast'])->name('checkout.payfast');
+    Route::get('/checkout/otp/{order}', [CheckoutController::class, 'showOtpForm'])->name('checkout.otp');
+    Route::post('/checkout/otp/{order}', [CheckoutController::class, 'confirmPayFast'])->name('checkout.otp.confirm');
+    Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])->name('checkout.success');
+});
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Password Reset Routes
+Route::get('/forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])
+    ->name('password.request');
+Route::post('/forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])
+    ->name('password.email');
+Route::get('/reset-password/{token}', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])
+    ->name('password.reset');
+Route::post('/reset-password', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])
+    ->name('password.store');
 
 Route::prefix('admin')->group(function () {
-    Route::get('login', [AuthController::class, 'showLogin'])->name('admin.login');
-    Route::post('login', [AuthController::class, 'login'])->name('admin.login.submit');
+    Route::get('login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+    Route::post('login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 
     Route::middleware(['auth', EnsureUserIsAdmin::class])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-        Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
+        Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
         
         // Categories
         Route::resource('categories', CategoryController::class)->names('admin.categories');

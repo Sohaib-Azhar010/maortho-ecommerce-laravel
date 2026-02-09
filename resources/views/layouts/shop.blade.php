@@ -50,7 +50,31 @@
             </div>
             
             <div class="d-flex align-items-center">
-                <a href="#" class="text-dark me-3"><i class="fa fa-search"></i></a>
+                @guest
+                    <a href="{{ route('login') }}" class="text-dark me-3 text-decoration-none fw-medium">LOGIN</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-sm me-3 fw-bold">SIGN UP</a>
+                @endguest
+
+                @auth
+                    <div class="dropdown me-3">
+                        <a href="#" class="text-dark dropdown-toggle text-decoration-none fw-medium" data-bs-toggle="dropdown">
+                            {{ strtoupper(Auth::user()->name) }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                            @if(Auth::user()->role === 'admin')
+                                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            @endif
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @endauth
+
                 @php
                     $cartCount = collect(session('cart', []))->sum('quantity');
                 @endphp

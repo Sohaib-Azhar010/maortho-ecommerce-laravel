@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('admin/*')) {
                 return route('admin.login');
             }
-            return route('admin.login');
+            return route('login');
         });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
