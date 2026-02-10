@@ -131,7 +131,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i>
-                            <span>email@yourdomain.com</span>
+                            <span>maorthoimplants65@gmail.com</span>
                         </li>
                     </ul>
                 </div>

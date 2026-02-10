@@ -58,7 +58,7 @@
                         <h4 class="h5 text-black mb-3">4. Return Process</h4>
                         <p class="text-muted">To initiate a return, please follow these steps:</p>
                         <ol class="text-muted">
-                            <li>Contact our customer service team at <strong>+92 344 8261083</strong> or email us at <strong>email@yourdomain.com</strong> within 7 days of receiving your order</li>
+                            <li>Contact our customer service team at <strong>+92 344 8261083</strong> or email us at <strong>maorthoimplants65@gmail.com</strong> within 7 days of receiving your order</li>
                             <li>Provide your order number and reason for return</li>
                             <li>Our team will provide you with a Return Authorization (RA) number</li>
                             <li>Package the item securely in its original packaging</li>
@@ -84,7 +84,7 @@
                     <div class="mb-4">
                         <h4 class="h5 text-black mb-3">7. Damaged or Defective Items</h4>
                         <p class="text-muted">
-                            If you receive a damaged or defective item, please contact us immediately at <strong>+92 344 8261083</strong> or <strong>email@yourdomain.com</strong>. We will arrange for a replacement or full refund, including return shipping costs, at no charge to you.
+                            If you receive a damaged or defective item, please contact us immediately at <strong>+92 344 8261083</strong> or <strong>maorthoimplants65@gmail.com</strong>. We will arrange for a replacement or full refund, including return shipping costs, at no charge to you.
                         </p>
                     </div>
 
@@ -94,7 +94,7 @@
                             If you have any questions about our Refund or Return Policy, please contact us:
                         </p>
                         <p class="text-muted mb-0">
-                            <strong>Email:</strong> email@yourdomain.com<br>
+                            <strong>Email:</strong> maorthoimplants65@gmail.com<br>
                             <strong>Phone:</strong> +92 344 8261083<br>
                             <strong>Address:</strong> 97 C Hhajvary Scheme, Near Hurbanspura, Lahore
                         </p>

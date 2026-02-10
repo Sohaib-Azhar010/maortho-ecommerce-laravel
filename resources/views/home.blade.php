@@ -9,7 +9,7 @@
             <div class="col-lg-7">
                 <span class="hero-subtitle text-uppercase d-block">Premium Orthopedic Equipment & Supports</span>
                 <h1 class="hero-title">WELCOME TO MAORTHO</h1>
-                <a href="#" class="btn btn-hero">SHOP NOW</a>
+                <a href="{{ route('store') }}" class="btn btn-hero">SHOP NOW</a>
             </div>
         </div>
     </div>

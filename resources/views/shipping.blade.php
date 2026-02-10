@@ -67,7 +67,7 @@
                     <div class="mb-4">
                         <h4 class="h5 text-black mb-3">6. Delivery Address</h4>
                         <p class="text-muted">
-                            Please ensure that your delivery address is complete and accurate. We are not responsible for orders shipped to incorrect addresses provided by the customer. If you need to change your delivery address, please contact us immediately at <strong>+92 344 8261083</strong> or <strong>email@yourdomain.com</strong> before your order is processed.
+                            Please ensure that your delivery address is complete and accurate. We are not responsible for orders shipped to incorrect addresses provided by the customer. If you need to change your delivery address, please contact us immediately at <strong>+92 344 8261083</strong> or <strong>maorthoimplants65@gmail.com</strong> before your order is processed.
                         </p>
                     </div>
 
@@ -88,7 +88,7 @@
                     <div class="mb-4">
                         <h4 class="h5 text-black mb-3">9. Damaged or Lost Shipments</h4>
                         <p class="text-muted">
-                            If your package arrives damaged or is lost in transit, please contact us immediately at <strong>+92 344 8261083</strong> or <strong>email@yourdomain.com</strong> with your order number. We will investigate and work with the shipping carrier to resolve the issue. We will replace or refund your order as appropriate.
+                            If your package arrives damaged or is lost in transit, please contact us immediately at <strong>+92 344 8261083</strong> or <strong>maorthoimplants65@gmail.com</strong> with your order number. We will investigate and work with the shipping carrier to resolve the issue. We will replace or refund your order as appropriate.
                         </p>
                     </div>
 
@@ -98,7 +98,7 @@
                             If you have any questions about our Shipping Policy, please contact us:
                         </p>
                         <p class="text-muted mb-0">
-                            <strong>Email:</strong> email@yourdomain.com<br>
+                            <strong>Email:</strong> maorthoimplants65@gmail.com<br>
                             <strong>Phone:</strong> +92 344 8261083<br>
                             <strong>Address:</strong> 97 C Hhajvary Scheme, Near Hurbanspura, Lahore
                         </p>

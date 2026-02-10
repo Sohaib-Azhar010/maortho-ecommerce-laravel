@@ -78,7 +78,7 @@
                             If you have any questions about these Terms and Conditions, please contact us at:
                         </p>
                         <p class="text-muted mb-0">
-                            <strong>Email:</strong> email@yourdomain.com<br>
+                            <strong>Email:</strong> maorthoimplants65@gmail.com<br>
                             <strong>Phone:</strong> +92 344 8261083<br>
                             <strong>Address:</strong> 97 C Hhajvary Scheme, Near Hurbanspura, Lahore
                         </p>
