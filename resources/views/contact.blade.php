@@ -101,23 +101,11 @@
                     <h2 class="h3 mb-5 text-white">Offices</h2>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="p-4 bg-white rounded shadow-sm h-100">
-                        <h3 class="h5 text-black text-uppercase fw-bold mb-3">New York</h3>
-                        <p class="text-muted mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="p-4 bg-white rounded shadow-sm h-100">
-                        <h3 class="h5 text-black text-uppercase fw-bold mb-3">London</h3>
-                        <p class="text-muted mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="p-4 bg-white rounded shadow-sm h-100">
-                        <h3 class="h5 text-black text-uppercase fw-bold mb-3">Canada</h3>
-                        <p class="text-muted mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        <h3 class="h5 text-black text-uppercase fw-bold mb-3">Pakistan</h3>
+                        <p class="text-muted mb-0">97 C Hhajvary Scheme, Near Hurbanspura, Lahore</p>
                     </div>
                 </div>
             </div>
