@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Pagination\Paginator;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,5 +25,7 @@ class AppServiceProvider extends ServiceProvider
         // Fix for MySQL/MariaDB key length issue with utf8mb4
         // 191 * 4 bytes = 764 bytes (under the 1000 byte limit)
         Schema::defaultStringLength(191);
+        
+        Paginator::useBootstrapFive();
     }
 }
