@@ -1,0 +1,52 @@
+name: Deploy to Namecheap Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy Laravel Application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH to Namecheap
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script_stop: true
+          script: |
+            export PATH="$HOME/bin:/usr/local/bin:/opt/cpanel/ea-php82/root/usr/bin:$PATH"
+            cd /home/thelfpvy/maortho.care
+
+            echo "=== Pulling latest changes from main branch ==="
+            git pull origin main
+
+            echo "=== Installing / Updating Composer dependencies ==="
+            if command -v composer &> /dev/null; then
+              composer install --no-dev --optimize-autoloader --no-interaction
+            elif [ -f composer.phar ]; then
+              php composer.phar install --no-dev --optimize-autoloader --no-interaction
+            else
+              curl -sS https://getcomposer.org/installer | php
+              php composer.phar install --no-dev --optimize-autoloader --no-interaction
+            fi
+
+            echo "=== Running Database Migrations ==="
+            php artisan migrate --force
+
+            echo "=== Clearing & Rebuilding Production Caches ==="
+            php artisan optimize:clear
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            echo "=== Ensuring Storage Permissions ==="
+            chmod -R 775 storage bootstrap/cache
+
+            echo "=== Deployment Successfully Completed ==="
+
